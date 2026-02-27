@@ -125,7 +125,9 @@
     function connectSocket() {
       const sender = document.getElementById("sender").value;
 
-      socket = io(SOCKET_URL);
+      socket = io(SOCKET_URL, {
+        transports: ["websocket"]
+      });
 
       socket.on("connect", () => {
         socket.emit("join", sender);
